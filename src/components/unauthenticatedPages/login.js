@@ -1,15 +1,16 @@
 import React from "react";
 // import { useState } from "react";
-// import { useAuth } from "../context/auth-context";
+import { useAuth } from "../../context/auth-context";
 
 const Login = (props) => {
   // const [username, setUsername] = useState("");
   // const [password, setPassword] = useState("");
   // const [errorMessage, setErrorMessage] = useState(null);
-  // let setUser = useAuth().setUser;
+  let setUser = useAuth().setUser;
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    setUser(true);
     // let body = JSON.stringify({ username: username, password: password });
     // fetch(address, {
     //   method: "POST",
