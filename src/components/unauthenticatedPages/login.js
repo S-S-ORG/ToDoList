@@ -28,7 +28,7 @@ const Login = (props) => {
     <div className="account-form">
       <h2>Login to App</h2>
       <div className="error-message">{/* {errorMessage} */}</div>
-      <form>
+      <form className="loginForm">
         <input
           type="text"
           id="username"

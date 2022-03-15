@@ -29,7 +29,7 @@ const Register = (props) => {
       <div className="error-message" data-testid="error-message">
         {/* {errorMessage} */}
       </div>
-      <form onSubmit={onSubmitHandler}>
+      <form className="loginForm" onSubmit={onSubmitHandler}>
         <input
           type="text"
           id="username"
