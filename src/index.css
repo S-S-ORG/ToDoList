@@ -136,11 +136,15 @@ button[type="submit"] {
   margin-right: 0.2rem;
 }
 
-#title {
-  font-size: 4rem;
+#to-do-list-page-title {
+  font-size: 3.5rem;
   color: #ffeff9;
   text-align: center;
   margin: 2rem;
+  margin-bottom: 3.5rem;
+  text-shadow: 0 0 0.5rem #fff, 0 0 0.7rem #fff, 0 0 1.5rem #fff,
+    0 0 2.5rem #0fa, 0 0 5rem #0fa, 0 0 6rem #0fa, 0 0 7rem #0fa,
+    0 0 9.5rem #0fa;
 }
 
 .item-title {
@@ -149,7 +153,8 @@ button[type="submit"] {
   margin-left: 1rem;
   margin-right: 0.3rem;
   padding: 1.2rem;
-  border: solid 2px rgb(39, 37, 34);
+  border: solid 2px rgb(179, 179, 179);
+  border-radius: 5px;
   width: 20%;
   height: 100%;
 }
@@ -160,6 +165,8 @@ button[type="submit"] {
   border: solid 2px rgb(39, 37, 34);
   width: 60%;
   height: 100%;
+  border: solid 2px rgb(179, 179, 179);
+  border-radius: 5px;
 }
 
 #logout {
@@ -187,7 +194,7 @@ button[type="submit"] {
   right: 0;
   top: 0;
 }
-.modal{
+.modal {
   border: solid rgb(255, 255, 255) 2px;
   border-radius: 10px;
   background-image: linear-gradient(to right, #0b215f, #7b60dd);
@@ -205,7 +212,7 @@ button[type="submit"] {
   margin: 0 0.1rem;
 }
 
-.modal > input{
+.modal > input {
   font-size: 1.2rem;
   padding: 1em 1em;
 }

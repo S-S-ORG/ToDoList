@@ -11,6 +11,9 @@ export const Modal = ({
   const [description, setDescription] = useState(item.description);
   const cancelHandler = () => {
     setIsOpen(false);
+    resetInputValues();
+  };
+  const resetInputValues = () => {
     document.getElementById("modal-title").value = item.title;
     document.getElementById("modal-description").value = item.description;
   };
@@ -39,7 +42,10 @@ export const Modal = ({
         />
         <button
           className="modal-delete-button"
-          onClick={() => deleteHandler(item.id)}
+          onClick={() => {
+            deleteHandler(item.id);
+            resetInputValues();
+          }}
         >
           Delete
         </button>

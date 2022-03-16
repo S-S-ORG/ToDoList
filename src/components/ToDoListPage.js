@@ -66,7 +66,7 @@ const ToDoListPage = () => {
       <button onClick={logoutHandler} id="logout">
         logout
       </button>
-      <div id="title">Your to do list</div>
+      <div id="to-do-list-page-title">Your to do list</div>
       <form className="add-item">
         <input
           onChange={(e) => setTitle(e.target.value)}
