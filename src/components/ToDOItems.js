@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ToDoItems = ({ toDoListItems }) => {
+export const ToDoItems = ({ toDoListItems, deleteHandler, editHandler }) => {
   return (
     <section className="toDoItems">
       {toDoListItems.map((item, index) => {
@@ -8,8 +8,8 @@ export const ToDoItems = ({ toDoListItems }) => {
           <div key={index} className="toDoItem">
             <h3 className="item-title">{item.title}</h3>
             <p className="item-description">&#8226; {item.description}</p>
-            <button>edit</button>
-            <button>delete</button>
+            <button onClick={() => editHandler(item.id)}>Edit</button>
+            <button onClick={() => deleteHandler(item.id)}>Delete</button>
           </div>
         );
       })}
