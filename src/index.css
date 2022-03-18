@@ -17,6 +17,24 @@ body {
   align-items: center;
 }
 
+@keyframes fadeIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .account-form {
   background-color: #7b60dd;
   border: 2px solid rgba(0, 0, 0, 0.438);
@@ -24,6 +42,8 @@ body {
   padding: 25px 40px;
   box-shadow: rgba(0, 0, 0, 0.5) 0 0 50px;
   padding: 2rem 5rem;
+  animation-name: fadeIn;
+  animation-duration: 2s;
 }
 
 h2 {
@@ -109,9 +129,36 @@ button[type="submit"] {
   width: 10%;
   margin: 0 0.1rem;
 }
+
+@keyframes appearing {
+  0% {
+    opacity: 0;
+  }
+  4% {
+    opacity: 0.1;
+  }
+  5% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.1;
+  }
+  9% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .add-item {
+  position: relative;
+  width: 90%;
+  left: 5%;
   display: flex;
   justify-content: center;
+  animation-name: appearing;
+  animation-duration: 4s;
 }
 .add-item > input {
   font-size: 1.5rem;
@@ -136,6 +183,33 @@ button[type="submit"] {
   margin-right: 0.2rem;
 }
 
+@keyframes neonAnimation {
+  0% {
+    text-shadow: none;
+  }
+  4% {
+    text-shadow: 0 0 0.5rem #fff, 0 0 0.7rem #fff, 0 0 1.5rem #fff,
+      0 0 2.5rem #0fa, 0 0 5rem #0fa, 0 0 6rem #0fa, 0 0 7rem #0fa,
+      0 0 9.5rem #0fa;
+  }
+  5% {
+    text-shadow: none;
+  }
+  8% {
+    text-shadow: 0 0 0.5rem #fff, 0 0 0.7rem #fff, 0 0 1.5rem #fff,
+      0 0 2.5rem #0fa, 0 0 5rem #0fa, 0 0 6rem #0fa, 0 0 7rem #0fa,
+      0 0 9.5rem #0fa;
+  }
+  9% {
+    text-shadow: none;
+  }
+  100% {
+    text-shadow: 0 0 0.5rem #fff, 0 0 0.7rem #fff, 0 0 1.5rem #fff,
+      0 0 2.5rem #0fa, 0 0 5rem #0fa, 0 0 6rem #0fa, 0 0 7rem #0fa,
+      0 0 9.5rem #0fa;
+  }
+}
+
 #to-do-list-page-title {
   font-size: 3.5rem;
   color: #ffeff9;
@@ -145,6 +219,8 @@ button[type="submit"] {
   text-shadow: 0 0 0.5rem #fff, 0 0 0.7rem #fff, 0 0 1.5rem #fff,
     0 0 2.5rem #0fa, 0 0 5rem #0fa, 0 0 6rem #0fa, 0 0 7rem #0fa,
     0 0 9.5rem #0fa;
+  animation-name: neonAnimation;
+  animation-duration: 4s;
 }
 
 .item-title {
@@ -182,23 +258,44 @@ button[type="submit"] {
   color: white;
 }
 
+@keyframes blurring {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
 .modal-wrapper {
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   bottom: 0;
   left: 0;
   right: 0;
   top: 0;
+  animation-name: blurring;
+  animation-duration:1s;
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translate(0,-200%)
+  }
+  100% {
+    transform: translate(0,0);
+  }
 }
 .modal {
   border: solid rgb(255, 255, 255) 2px;
   border-radius: 10px;
   background-image: linear-gradient(to right, #0b215f, #7b60dd);
   padding: 3rem;
+  animation-name: moveUp;
+  animation-duration: 0.5s;
 }
 .modal-close-button {
   background: #af9006;
@@ -215,6 +312,8 @@ button[type="submit"] {
 .modal > input {
   font-size: 1.2rem;
   padding: 1em 1em;
+  border-radius: 7px;
+  margin-right: 2px;
 }
 
 .modal-delete-button {
