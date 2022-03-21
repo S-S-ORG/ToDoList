@@ -7,7 +7,7 @@ Install the node packages:
 * cd ./server && npm i
 
 Start the react code
-* npm start
+* npm run start
 
 Start the server
-* cd ./server && npm start
+* cd ./server && npm run start
