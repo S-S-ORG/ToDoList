@@ -4,7 +4,7 @@ import Todo from "../models/Todo.js"
 export function getTodoById(req, res, next, todoId) {
   // todoId is coming from the router.param
   // .findById() method will find the todo which has id==todoId
-  findById(todoId).exec((err, todo) => {
+  Todo.findById(todoId).exec((err, todo) => {
     if (err || !todo) {
       return res.status(400).json({
         error: "404 todo not found",
