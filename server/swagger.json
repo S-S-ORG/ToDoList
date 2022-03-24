@@ -1,0 +1,197 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "TodoAppProject",
+    "description": "My Todo Project Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8000",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Todos",
+      "description": "API for Todos in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/todo/create": {
+      "post": {
+        "tags": ["Todos"],
+        "summary": "Create new todo in system",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Todo that we want to create",
+            "schema": {
+              "$ref": "#/definitions/createTodo"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New Todo is created",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        }
+      }
+    },
+    "/todos": {
+      "get": {
+        "tags": ["Todos"],
+        "summary": "Get all todos in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Todos"
+            }
+          }
+        }
+      }
+    },
+    "/todo/{id}/delete":{
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of Todo that we want to find",
+          "type": "integer"
+        }
+      ],
+      "delete": {
+        "summary":"Delete Todo with given ID",
+        "tags":["Todos"],
+        "responses": {
+          "200": {
+            "description": "DELETE OK",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        }
+      }
+    },
+    "/todo/{id}/update":{
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of Todo that we want to find",
+          "type": "integer"
+        }
+      ],
+      "put": {
+        "summary":"Update a Todo with given ID",
+        "tags":["Todos"],
+        "parameters":[
+          {
+            "name": "body",
+            "in":"body",
+            "description": "Todo with new values of propertios",
+            "schema": {
+              "$ref": "#/definitions/updateTodo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "UPDATE OK",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        }
+      }
+    },
+    "/todo/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of Todo that we want to find",
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "summary": "Get Todo with given ID",
+        "tags": ["Todos"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Todo": {
+      "required": ["title", "_id"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "title": {
+          "type": "string"
+        },
+        "completed": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "createTodo": {
+      "required": ["title"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "completed": {
+          "type": "boolean",
+          "default": false
+        },
+        "description": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "updateTodo": {
+      "required": ["completed"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "completed": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Todos": {
+      "type": "array",
+      "$ref": "#/definitions/Todo"
+    }
+  }
+}

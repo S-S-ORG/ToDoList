@@ -23,11 +23,16 @@ Start the server
 * cd ./server && npm run start
 
 # Api Informations
-Current endpoints:
+* Swagger-ui:
 
-* GET http://localhost:8000/api/todos : gets all saved todos in local mongodb
-* GET http://localhost:8000/api/todo/{todo-id}: gets info for an individual todo
-* POST http://localhost:8000/api/todo/create: create a todo item (Note: must send JSON)
-* PUT http://localhost:8000/api/todo/{todo-id}/update: Updates info for an individual todo
-* DELETE http://localhost:8000/api/todo/{todo-id}/delete: Deletes an individual todo from the local mongodb
+You can now use Swagger Ui for documentation and testing the endpoints of the api:
+Just simply start the server and go to this link : http://localhost:8000/swagger-ui
+
+* Current endpoints:
+
+    - GET http://localhost:8000/api/todos : gets all saved todos in local mongodb
+    - GET http://localhost:8000/api/todo/{todo-id}: gets info for an individual todo
+    - POST http://localhost:8000/api/todo/create: create a todo item (Note: must send JSON)
+    - PUT http://localhost:8000/api/todo/{todo-id}/update: Updates info for an individual todo
+    - DELETE http://localhost:8000/api/todo/{todo-id}/delete: Deletes an individual todo from the local mongodb
 
