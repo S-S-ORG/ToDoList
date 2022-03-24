@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser"
 import mongoose from "mongoose";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from './swagger.json' assert {type: "json"};
 const {connect} = mongoose;
 // we are using port 8000
 const port = 8000;
@@ -26,6 +28,9 @@ app.use(express.json());
 
 // include the todoRoutes
 app.use("/api", todoRoutes);
+
+//include swagger docs
+app.use('/swagger-ui', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // start the server in the port 8000
 app.listen(port, () => {
