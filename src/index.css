@@ -116,6 +116,18 @@ button[type="submit"] {
   font-size: larger;
   border-radius: 10px;
 }
+.doneItem {
+  margin: 1rem 2.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: solid black 2px;
+  padding: 0rem 0.5rem;
+  background-color: #4e99acaf;
+  color: white;
+  font-size: larger;
+  border-radius: 10px;
+}
 
 .toDoItem > button {
   background: #2941c7a1;
@@ -256,6 +268,7 @@ button[type="submit"] {
   border-radius: 3px;
   margin-right: 0.2rem;
   color: white;
+  cursor: pointer;
 }
 
 @keyframes blurring {
@@ -278,15 +291,15 @@ button[type="submit"] {
   right: 0;
   top: 0;
   animation-name: blurring;
-  animation-duration:1s;
+  animation-duration: 1s;
 }
 
 @keyframes moveUp {
   0% {
-    transform: translate(0,-200%)
+    transform: translate(0, -200%);
   }
   100% {
-    transform: translate(0,0);
+    transform: translate(0, 0);
   }
 }
 .modal {

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useAuth } from "../context/auth-context";
 import { Modal } from "./Modal";
 import { ToDoItems } from "./ToDOItems";
+import DoneItems from "./DoneItems";
+import axios from "axios";
 // import { useAuth } from "./context/auth-context";
 
 const ToDoListPage = () => {
@@ -21,12 +23,24 @@ const ToDoListPage = () => {
       toDoListItems.length === 0
         ? 1
         : toDoListItems[toDoListItems.length - 1].id + 1;
-    toDoListItems.push({ id: newId, title: title, description: description });
+    let newItemAdded = {
+      id: newId,
+      title: title,
+      completed: false,
+      description: description,
+    };
+    toDoListItems.push(newItemAdded);
     setToDoListItems([...toDoListItems]);
     document.getElementById("input-title").value = "";
     document.getElementById("input-description").value = "";
     setTitle("");
     setDescription("");
+    axios
+      .post("http://localhost:8000/api/todos")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => console.log(error));
   };
 
   let setUser = useAuth().setUser;
@@ -40,6 +54,21 @@ const ToDoListPage = () => {
     });
     setToDoListItems(newList);
     setIsOpen(false);
+  };
+  const doneHandler = (id) => {
+    let doneItems = toDoListItems.map((item) => {
+      if (item.id === id) {
+        return {
+          id: item.id,
+          title: item.title,
+          completed: true,
+          description: item.description,
+        };
+      } else {
+        return item;
+      }
+    });
+    setToDoListItems(doneItems);
   };
   const editHandler = (id) => {
     let item = toDoListItems.filter((item) => {
@@ -82,13 +111,20 @@ const ToDoListPage = () => {
           add
         </button>
       </form>
-      {toDoListItems.length === 0 ? null : (
-        <ToDoItems
-          toDoListItems={toDoListItems}
-          deleteHandler={deleteHandler}
-          editHandler={editHandler}
-        />
-      )}
+      <div id="inprogressAndDoneContainer">
+        {toDoListItems.length === 0 ? null : (
+          <ToDoItems
+            toDoListItems={toDoListItems}
+            deleteHandler={deleteHandler}
+            editHandler={editHandler}
+            doneHandler={doneHandler}
+          />
+        )}
+        {toDoListItems.some((item) => item.completed === true) ? (
+          <DoneItems doneItems={toDoListItems} />
+        ) : null}
+      </div>
+
       <Modal
         isOpen={isOpen}
         item={modalItem}
@@ -99,5 +135,4 @@ const ToDoListPage = () => {
     </>
   );
 };
-
 export default ToDoListPage;
